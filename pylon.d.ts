@@ -5,9 +5,8 @@ import type { NodePgDatabase } from 'drizzle-orm/node-postgres'
 declare module '@getcronit/pylon' {
   interface Bindings {
     DATABASE_URL: string
+    APP_ENV: string
   }
 
-  interface Variables {
-    db: NodePgDatabase
-  }
+  interface Variables {}
 }

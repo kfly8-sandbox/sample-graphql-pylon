@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "deploy": "pylon build && wrangler deploy --env production",
-    "dev": "pylon dev -c \"wrangler dev\"",
+    "dev": "pylon dev -c \"wrangler dev --env dev\"",
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
