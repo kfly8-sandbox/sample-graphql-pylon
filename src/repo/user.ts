@@ -1,6 +1,6 @@
-import { users } from './schema';
+import { users } from '../schema';
 import { eq } from 'drizzle-orm';
-import { getDB } from './util';
+import { getDB } from '../util';
 
 export class User {
   id: number

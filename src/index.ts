@@ -1,13 +1,10 @@
 import {app, getContext } from '@getcronit/pylon'
 
-import { User } from './user'
+import { User } from './repo/user'
 
 export const graphql = {
   Query: {
     hello: () => {
-      return 'Hello, world!'
-    },
-    world: () => {
       const c = getContext()
       return `Hello, ${c.req.header('USER-AGENT')}`
     },
