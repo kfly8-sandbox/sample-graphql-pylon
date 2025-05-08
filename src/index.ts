@@ -1,8 +1,26 @@
-import {Hono} from 'hono'
+import { Hono } from 'hono'
 import { logger } from 'hono/logger'
-import { getContext, Env } from '@getcronit/pylon'
+import { requestId } from 'hono/request-id'
+import { asyncContext, getContext, Env } from '@getcronit/pylon'
 
 import { User } from './repo/user'
+
+const app = new Hono<Env>()
+app.use(logger())
+app.use(requestId())
+
+// Save the request context in the async context
+app.use('*', async (c, next) => {
+  return new Promise((resolve, reject) => {
+    asyncContext.run(c, async () => {
+      try {
+        resolve(await next())
+      } catch (error) {
+        reject(error)
+      }
+    })
+  })
+})
 
 export const graphql = {
   Query: {
@@ -15,10 +33,6 @@ export const graphql = {
   },
   Mutation: {}
 }
-
-export const app = new Hono<Env>()
-
-app.use('*', logger())
 
 // Turn off playground and viewer for production
 // If Pylon is upgraded to v3, then it can disabled by configuration.
