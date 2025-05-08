@@ -11,7 +11,8 @@ export const graphql = {
       const c = getContext()
       return `Hello, ${c.req.header('USER-AGENT')}`
     },
-    users: User.getAll
+    user: async (id: number) => User.getById(id),
+    users: User.getAll,
   },
   Mutation: {}
 }
