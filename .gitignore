@@ -170,6 +170,7 @@ dist
 
 .dev.vars
 .wrangler/
+.dev.vars.production
 
 # Pylon project
 .pylon

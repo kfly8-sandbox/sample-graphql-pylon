@@ -17,7 +17,7 @@ export const graphql = {
 // Turn off playground and viewer for production
 // If Pylon is upgraded to v3, then it can disabled by configuration.
 // Ref: https://github.com/getcronit/pylon/issues/72
-if (process.env.APP_ENV === 'development') {
+if (process.env.APP_ENV === 'production') {
   app.get('/graphql', async (c) => {
     return c.notFound()
   });
