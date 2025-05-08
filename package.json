@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "deploy": "pylon build && wrangler deploy",
-    "dev": "pylon dev -c \"wrangler dev\"",
+    "deploy": "pylon build && wrangler deploy --env production",
+    "dev": "pylon dev -c \"wrangler dev --env development\"",
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
